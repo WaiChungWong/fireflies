@@ -36,7 +36,7 @@ class Fireflies extends Component {
     this.setState({ fireflies });
 
     if (fireflies.length < count) {
-      setTimeout(() => this.generateFirefly(), 10);
+      setTimeout(() => this.generateFirefly(), 1000);
     }
   }
 
