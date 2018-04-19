@@ -50,7 +50,7 @@ class Firefly {
   }
 
   initialise(width, height) {
-    this.behaviour = Behaviours.WANDER;
+    this.changeBehaviour(Behaviours.WANDER);
     this.radius = 10 + 20 * random();
     this.position.x = width * random();
     this.position.y = height;

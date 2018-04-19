@@ -16,6 +16,7 @@ class App extends Component {
     super(props);
 
     this.mouse = new Mouse();
+    this.blockContextMenu = event => event.preventDefault();
 
     this.state = {
       firefliesTarget: new FirefliesTarget(this.mouse),
@@ -24,8 +25,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const { mouse, scene, foreground, background } = this;
+    const { mouse, blockContextMenu, scene, foreground, background } = this;
     const { animator } = this.props;
+
+    scene.addEventListener("contextmenu", blockContextMenu);
 
     animator.add(() => {
       if (mouse.isMouseDown && this.isAllFirefliesAttracted()) {
@@ -47,7 +50,9 @@ class App extends Component {
   }
 
   componentWillUnmount() {
-    const { mouse } = this;
+    const { mouse, blockContextMenu, scene } = this;
+
+    scene.removeEventListener("contextmenu", blockContextMenu);
 
     mouse.detach();
   }
