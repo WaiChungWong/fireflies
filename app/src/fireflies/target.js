@@ -13,6 +13,7 @@ export default class Target {
       this.clicked = true;
       setTimeout(() => (this.clicked = false), this.clickTime);
     });
+    mouse.onMouseUp(() => {});
   }
 
   getPosition() {
@@ -33,11 +34,11 @@ export default class Target {
 
   getAction() {
     const { clicked, mouse, dashSpeed } = this;
-    const { isMouseDown, isLeftButton, movingSpeed } = mouse;
+    const { isMouseDown, movingSpeed } = mouse;
 
     if (clicked) {
       return Actions.CLICK;
-    } else if (isMouseDown && isLeftButton) {
+    } else if (isMouseDown) {
       return Actions.HOLD;
     } else if (movingSpeed > dashSpeed) {
       return Actions.DASH;

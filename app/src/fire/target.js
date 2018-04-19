@@ -1,7 +1,6 @@
 export default class Target {
   constructor(mouse) {
     this.mouse = mouse;
-    this.isMousePressed = false;
     this.clicked = false;
     this.clickTime = 120;
 
@@ -10,6 +9,11 @@ export default class Target {
       this.clicked = true;
       setTimeout(() => (this.clicked = false), this.clickTime);
     });
+    mouse.onMouseUp(() => {});
+  }
+
+  isClicked() {
+    return this.clicked;
   }
 
   getPosition() {

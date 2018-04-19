@@ -66,7 +66,7 @@ class SparkParticle {
   }
 
   update(timeDiff, target) {
-    const { clicked } = target;
+    const clicked = target.isClicked();
     const position = target.getPosition();
 
     /* Update the fire particle. If the remainingLife is over, reset properties of the fire particle. */
