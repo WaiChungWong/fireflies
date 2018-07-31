@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import Animator from "@jworkshop/animator";
-import CanvasAnimator from "@jworkshop/canvasanimator";
+import Animator from "jw-animator";
+import CanvasAnimator from "jw-animate-canvas";
 
 import FireParticle from "./fireparticle";
 import SparkParticle from "./sparkparticle";
@@ -13,10 +13,13 @@ import "./style.css";
 class Fire extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       fireParticles: [],
       sparkParticles: []
     };
+
+    this.animate = this.animate.bind(this);
   }
 
   componentDidMount() {
@@ -84,9 +87,7 @@ class Fire extends Component {
       <CanvasAnimator
         className="fire-layer"
         animator={animator}
-        animate={(context, width, height, timeDiff) => {
-          this.animate(context, width, height, timeDiff);
-        }}
+        animate={this.animate}
       />
     );
   }

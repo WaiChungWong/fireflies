@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import Animator from "@jworkshop/animator";
-import Mouse from "@jworkshop/mouse";
+import Animator from "jw-animator";
+import Mouse from "jw-mouse";
 
 import Fireflies from "./fireflies";
 import FirefliesTarget from "./fireflies/target";

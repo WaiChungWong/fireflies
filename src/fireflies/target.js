@@ -8,12 +8,12 @@ export default class Target {
     this.dashSpeed = 1000;
     this.clickTime = 120;
 
-    mouse.onMouseMove(() => {});
-    mouse.onMouseDown(() => {
+    mouse.onMove(() => {});
+    mouse.onDown(() => {
       this.clicked = true;
       setTimeout(() => (this.clicked = false), this.clickTime);
     });
-    mouse.onMouseUp(() => {});
+    mouse.onUp(() => {});
   }
 
   getPosition() {

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import Animator from "@jworkshop/animator";
-import CanvasAnimator from "@jworkshop/canvasanimator";
+import Animator from "jw-animator";
+import AnimateCanvas from "jw-animate-canvas";
 
 import Firefly from "./firefly";
 import Behaviours from "./behaviours";
@@ -13,10 +13,13 @@ import "./style.css";
 class Fireflies extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       fireflies: [],
       performPosition: null
     };
+
+    this.animate = this.animate.bind(this);
   }
 
   componentDidMount() {
@@ -61,10 +64,10 @@ class Fireflies extends Component {
   }
 
   update(timeDiff) {
-    const { layer } = this;
-    const { width, height } = layer.state;
-    const { target, count, index, totalCount } = this.props;
-    const { fireflies, performPosition: position } = this.state;
+    const { layer, props, state } = this;
+    const { width, height } = layer.getCanvasElement();
+    const { target, count, index, totalCount } = props;
+    const { fireflies, performPosition: position } = state;
 
     if (position) {
       /* Update the fireflies. */
@@ -103,13 +106,11 @@ class Fireflies extends Component {
     const { animator } = this.props;
 
     return (
-      <CanvasAnimator
+      <AnimateCanvas
         ref={layer => (this.layer = layer)}
         className="fireflies-layer"
         animator={animator}
-        animate={(context, width, height, timeDiff) => {
-          this.animate(context, width, height, timeDiff);
-        }}
+        animate={this.animate}
       />
     );
   }
