@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Animator from "jw-animator";
 import Mouse from "jw-mouse";
 
+import AudioPlayer from "./audioplayer";
 import Fireflies from "./fireflies";
 import FirefliesTarget from "./fireflies/target";
 import Fire from "./fire";
@@ -89,6 +90,7 @@ class App extends Component {
           index={1}
           totalCount={100}
         />
+        <AudioPlayer animator={animator} />
       </div>
     );
   }
